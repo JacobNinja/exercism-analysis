@@ -1,6 +1,8 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    roodi (4.0.0)
+      ruby_parser (~> 3.2, >= 3.2.2)
     ruby_parser (3.6.1)
       sexp_processor (~> 4.1)
     sexp_processor (4.4.3)
@@ -9,4 +11,5 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  roodi
   ruby_parser
