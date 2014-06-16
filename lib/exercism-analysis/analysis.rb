@@ -7,8 +7,8 @@ module Exercism
     end
 
     def run(*analyzers)
-      analyzers.each do |analyzer|
-        analyzer.call(@adapter)
+      analyzers.each_with_object({}) do |analyzer, result|
+        result[analyzer] = analyzer.call(@adapter)
       end
     end
 
