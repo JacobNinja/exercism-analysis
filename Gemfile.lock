@@ -1,3 +1,10 @@
+PATH
+  remote: .
+  specs:
+    exercism-analysis (0.1.0)
+      roodi (~> 4.0)
+      ruby_parser (~> 3.6)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -11,5 +18,4 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  roodi
-  ruby_parser
+  exercism-analysis!
