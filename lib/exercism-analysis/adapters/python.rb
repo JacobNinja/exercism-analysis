@@ -1,7 +1,7 @@
 module Exercism
   module Adapters
 
-    class PythonAdapter
+    class Python
 
       attr_reader :code
 

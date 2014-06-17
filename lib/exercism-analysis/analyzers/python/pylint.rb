@@ -3,7 +3,7 @@ require 'json'
 module Exercism
   module Analyzers
 
-    class PylintAnalyzer < Analyzer
+    class Pylint < Analyzer
 
       def self.call(adapter)
         raw_result = with_tempfile('python', adapter) {|temp| adapter.execute(runner_path, temp.path) }

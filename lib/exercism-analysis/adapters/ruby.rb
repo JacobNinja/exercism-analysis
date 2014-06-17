@@ -3,7 +3,7 @@ require 'ruby_parser'
 module Exercism
   module Adapters
 
-    class RubyAdapter
+    class Ruby
 
       attr_reader :code
 
