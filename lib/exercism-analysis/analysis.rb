@@ -1,4 +1,4 @@
-module Exercism
+class Exercism
 
   class Analysis
 

@@ -1,6 +1,6 @@
 require 'json'
 
-module Exercism
+class Exercism
   module Analyzers
 
     class Jslint < Analyzer
@@ -15,7 +15,7 @@ module Exercism
       private
 
       def self.runner_path
-        File.expand_path('../../../../vendor/javascript/jshint_runner.js', __FILE__)
+        File.expand_path('../../../../../vendor/javascript/jshint_runner.js', __FILE__)
       end
 
     end

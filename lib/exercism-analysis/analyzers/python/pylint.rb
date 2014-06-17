@@ -1,6 +1,6 @@
 require 'json'
 
-module Exercism
+class Exercism
   module Analyzers
 
     class Pylint < Analyzer
@@ -15,7 +15,7 @@ module Exercism
       private
 
       def self.runner_path
-        File.expand_path('../../../../vendor/python/pylint_runner.py', __FILE__)
+        File.expand_path('../../../../../vendor/python/pylint_runner.py', __FILE__)
       end
 
     end

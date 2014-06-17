@@ -1,6 +1,6 @@
 require 'roodi'
 
-module Exercism
+class Exercism
   module Analyzers
 
     class Roodi < Analyzer

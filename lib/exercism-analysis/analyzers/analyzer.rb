@@ -1,6 +1,6 @@
 require 'tempfile'
 
-module Exercism
+class Exercism
   module Analyzers
 
     class Analyzer

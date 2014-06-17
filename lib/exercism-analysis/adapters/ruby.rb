@@ -1,6 +1,6 @@
 require 'ruby_parser'
 
-module Exercism
+class Exercism
   module Adapters
 
     class Ruby
