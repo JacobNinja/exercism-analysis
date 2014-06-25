@@ -21,10 +21,14 @@ Gem::Specification.new do |s|
     lib/exercism-analysis/adapters/javascript.rb
     lib/exercism-analysis/adapters/python.rb
     lib/exercism-analysis/adapters/ruby.rb
+    lib/exercism-analysis/adapters/go.rb
+    lib/exercism-analysis/adapters/clojure.rb
     lib/exercism-analysis/analyzers/analyzer.rb
     lib/exercism-analysis/analyzers/javascript/jslint.rb
     lib/exercism-analysis/analyzers/python/pylint.rb
     lib/exercism-analysis/analyzers/ruby/roodi.rb
+    lib/exercism-analysis/analyzers/go/golint.rb
+    lib/exercism-analysis/analyzers/clojure/kibit.rb
   ]
   s.files += Dir.glob('vendor/**/*')
 
