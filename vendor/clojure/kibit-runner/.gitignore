@@ -1,0 +1,9 @@
+/classes
+/checkouts
+/target/stale
+/target/kibit-runner-*-SNAPSHOT.jar
+pom.xml
+pom.xml.asc
+*.class
+/.lein-*
+/.nrepl-port
