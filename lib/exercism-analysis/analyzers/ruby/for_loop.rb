@@ -16,10 +16,11 @@ class Exercism
       private
 
       def self.replace_for_with_each(exp)
+        padding = ' ' * exp.column
         <<-TEMPLATE
-#{exp.receiver.src}.each do |#{exp.params.src}|
-  #{exp.body.src}
-end
+#{padding}#{exp.receiver.src}.each do |#{exp.params.src}|
+#{padding}  #{exp.body.src}
+#{padding}end
         TEMPLATE
       end
 
