@@ -1,0 +1,29 @@
+class Exercism
+  module Analyzers
+
+    class ForLoop < Analyzer
+
+      def self.call(adapter)
+        processor = Processors::ForLoopProcessor.new
+        CodeMiner.process(adapter.code, [processor])
+
+        feedback = processor.result.map do |exp|
+          Feedback.new(exp.src_extract, replace_for_with_each(exp))
+        end
+        Result.new(:for_loop, feedback)
+      end
+
+      private
+
+      def self.replace_for_with_each(exp)
+        <<-TEMPLATE
+#{exp.receiver.src}.each do |#{exp.params.src}|
+  #{exp.body.src}
+end
+        TEMPLATE
+      end
+
+    end
+
+  end
+end

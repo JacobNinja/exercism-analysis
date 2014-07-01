@@ -1,3 +1,9 @@
+GIT
+  remote: git://github.com/JacobNinja/codeminer.git
+  revision: 6db82aaeead2b842d2731f338215cdde2e883244
+  specs:
+    codeminer (0.1.0)
+
 PATH
   remote: .
   specs:
@@ -13,9 +19,12 @@ GEM
     ruby_parser (3.6.1)
       sexp_processor (~> 4.1)
     sexp_processor (4.4.3)
+    test-unit (2.5.5)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  codeminer!
   exercism-analysis!
+  test-unit (= 2.5.5)

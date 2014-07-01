@@ -1,5 +1,4 @@
-require 'test/unit'
-require File.expand_path('../../lib/exercism-analysis', __FILE__)
+require File.expand_path('../test_helper', __FILE__)
 
 class TestAdapter
 
