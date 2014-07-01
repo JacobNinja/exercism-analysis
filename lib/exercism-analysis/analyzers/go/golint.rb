@@ -7,7 +7,7 @@ class Exercism
         raw_result = with_tempfile('go', adapter) {|temp| adapter.execute('run', runner_path, temp.path) }
         raw_result.each_line.map do |result|
           _, line, column, reason = result.split(':')
-          Result.new(reason.lstrip.chomp, line, column)
+          ThirdPartyResult.new(reason.lstrip.chomp, line, column)
         end
       end
 

@@ -9,7 +9,7 @@ class Exercism
         raw_result = with_tempfile('clojure', adapter) {|temp| adapter.execute(jar_path, 'kibit_runner.core', temp.path) }
         JSON.parse(raw_result).map do |result|
           reason = "Expression #{result['expr']} can be simplified to #{result['alt']}"
-          Result.new(reason, result['line'], result['column'])
+          ThirdPartyResult.new(reason, result['line'], result['column'])
         end
       end
 

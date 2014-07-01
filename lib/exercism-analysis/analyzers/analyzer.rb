@@ -5,7 +5,7 @@ class Exercism
 
     class Analyzer
 
-      Result = Struct.new(:message, :line, :column)
+      ThirdPartyResult = Struct.new(:message, :line, :column)
 
       def self.with_tempfile(name, adapter, &block)
         temp_file = Tempfile.new(name)
