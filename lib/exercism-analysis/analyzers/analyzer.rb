@@ -34,6 +34,10 @@ class Exercism
         result
       end
 
+      def self.padding(exp)
+        ' ' * exp.column
+      end
+
     end
 
   end

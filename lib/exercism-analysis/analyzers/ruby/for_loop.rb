@@ -16,7 +16,7 @@ class Exercism
       private
 
       def self.replace_for_with_each(exp)
-        padding = ' ' * exp.column
+        padding = padding(exp)
         <<-TEMPLATE
 #{padding}#{exp.receiver.src}.each do |#{exp.params.src}|
 #{padding}  #{exp.body.src}
