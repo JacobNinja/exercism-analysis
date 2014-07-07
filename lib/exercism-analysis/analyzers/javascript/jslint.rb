@@ -5,8 +5,8 @@ class Exercism
 
     class Jslint < Analyzer
 
-      def self.call(adapter)
-        raw_result = with_tempfile('javascript', adapter) {|temp| adapter.execute(runner_path, temp.path) }
+      def call
+        raw_result = with_tempfile('javascript') {|temp| adapter.execute(runner_path, temp.path) }
         JSON.parse(raw_result).map do |result|
           ThirdPartyResult.new(result['reason'], result['line'], result['character'])
         end
@@ -14,7 +14,7 @@ class Exercism
 
       private
 
-      def self.runner_path
+      def runner_path
         File.expand_path('../../../../../vendor/javascript/jshint_runner.js', __FILE__)
       end
 

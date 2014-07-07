@@ -1,17 +1,12 @@
 class Exercism
   module Adapters
 
-    class Ruby
-
-      attr_reader :code
-
-      def initialize(code)
-        @code = code
-      end
+    class Ruby < Adapter
 
       def ast
-        @ast ||= CodeMiner.parse(@code)
+        @ast ||= CodeMiner.parse(code)
       end
+
 
     end
 

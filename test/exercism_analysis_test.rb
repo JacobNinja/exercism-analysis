@@ -1,11 +1,9 @@
 require File.expand_path('../test_helper', __FILE__)
 
-class TestAdapter
+class TestAnalyzer < Exercism::Analyzers::Analyzer
 
-  attr_reader :code
-
-  def initialize(code)
-    @code = code
+  def call
+    :foo
   end
 
 end
@@ -15,21 +13,12 @@ class ExercismAnalysisTest < Test::Unit::TestCase
   attr_reader :adapter, :sut
 
   def setup
-    @adapter = TestAdapter.new('class Test; end')
+    @adapter = Exercism::Adapters::Adapter.new('class Test; end')
     @sut = Exercism::Analysis.new(adapter)
   end
 
-  def test_calls_analyzer_with_adapter
-    analyzer_arg = nil
-    sut.run(-> (arg) { analyzer_arg = arg })
-    assert_not_nil analyzer_arg, 'Expected analyzer to be called with adapter'
-    assert_equal adapter, analyzer_arg
-  end
-
   def test_accumulates_analyzer_results
-    expected = Object.new
-    analyzer = -> * { expected }
-    assert_equal({analyzer => expected}, sut.run(analyzer))
+    assert_equal({TestAnalyzer => :foo}, sut.run(TestAnalyzer))
   end
 
 end

@@ -9,6 +9,7 @@ require File.expand_path('../exercism-analysis/processors/iter_mutation_processo
 require File.expand_path('../exercism-analysis/processors/send_processor', __FILE__)
 
 require File.expand_path('../exercism-analysis/analysis', __FILE__)
+require File.expand_path('../exercism-analysis/adapters/adapter', __FILE__)
 require File.expand_path('../exercism-analysis/adapters/javascript', __FILE__)
 require File.expand_path('../exercism-analysis/adapters/ruby', __FILE__)
 require File.expand_path('../exercism-analysis/adapters/python', __FILE__)

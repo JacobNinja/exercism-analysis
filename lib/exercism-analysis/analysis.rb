@@ -6,9 +6,10 @@ class Exercism
       @adapter = adapter
     end
 
-    def run(*analyzers)
+    def run(*analyzer_classes)
+      analyzers = @adapter.process(analyzer_classes)
       analyzers.each_with_object({}) do |analyzer, result|
-        result[analyzer] = analyzer.call(@adapter)
+        result[analyzer.class] = analyzer.call
       end
     end
 

@@ -1,13 +1,7 @@
 class Exercism
   module Adapters
 
-    class Go
-
-      attr_reader :code
-
-      def initialize(code)
-        @code = code
-      end
+    class Go < Adapter
 
       def execute(*commands)
         `GOPATH=#{go_path} go #{commands.join(' ')}`

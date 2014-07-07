@@ -5,7 +5,7 @@ class Exercism
 
     class Roodi < Analyzer
 
-      def self.call(adapter)
+      def call
         roodi = ::Roodi::Core::Runner.new
         roodi.check_content(adapter.code)
         roodi.errors.map do |error|

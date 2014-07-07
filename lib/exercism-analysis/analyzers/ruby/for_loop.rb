@@ -3,10 +3,9 @@ class Exercism
 
     class ForLoop < Analyzer
 
-      def self.call(adapter)
-        processor = Processors::ForLoopProcessor.new
-        CodeMiner.process(adapter.code, [processor])
+      processor Processors::ForLoopProcessor
 
+      def call
         feedback = processor.result.map do |exp|
           Feedback.new(exp.src_extract, replace_for_with_each(exp))
         end
@@ -15,7 +14,7 @@ class Exercism
 
       private
 
-      def self.replace_for_with_each(exp)
+      def replace_for_with_each(exp)
         padding = padding(exp)
         <<-TEMPLATE
 #{padding}#{exp.receiver.src}.each do |#{exp.params.src}|

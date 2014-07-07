@@ -5,10 +5,9 @@ class Exercism
 
     class IterMutation < Analyzer
 
-      def self.call(adapter)
-        processor = Processors::IterMutationProcessor.new
-        CodeMiner.process(adapter.code, [processor])
+      processor Processors::IterMutationProcessor
 
+      def call
         feedback = processor.result.map do |mutation|
           Feedback.new(mutation.iter.src_extract, Templates::EachToMap.render(mutation))
         end

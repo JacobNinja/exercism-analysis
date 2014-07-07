@@ -1,13 +1,7 @@
 class Exercism
   module Adapters
 
-    class Clojure
-
-      attr_reader :code
-
-      def initialize(code)
-        @code = code
-      end
+    class Clojure < Adapter
 
       def execute(jar, namespace, argument)
         `java -cp #{[jar, namespace, argument].join(' ')}`

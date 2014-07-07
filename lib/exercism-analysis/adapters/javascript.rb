@@ -1,13 +1,7 @@
 class Exercism
   module Adapters
 
-    class Javascript
-
-      attr_reader :code
-
-      def initialize(code)
-        @code = code
-      end
+    class Javascript < Adapter
 
       def execute(*commands)
         `node #{commands.join(' ')}`
