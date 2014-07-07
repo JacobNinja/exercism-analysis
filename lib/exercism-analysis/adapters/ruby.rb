@@ -1,5 +1,3 @@
-require 'ruby_parser'
-
 class Exercism
   module Adapters
 
@@ -7,13 +5,12 @@ class Exercism
 
       attr_reader :code
 
-      def initialize(code, parser=RubyParser.new)
+      def initialize(code)
         @code = code
-        @parser = parser
       end
 
       def ast
-        @ast ||= @parser.parse(@code)
+        @ast ||= CodeMiner.parse(@code)
       end
 
     end

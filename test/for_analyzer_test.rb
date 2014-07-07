@@ -1,6 +1,14 @@
 require File.expand_path('../test_helper', __FILE__)
 
-class ForAnalyzerTest < Test::Unit::TestCase
+class ForAnalyzerTest < AnalyzerTestCase
+
+  def adapter
+    Exercism::Adapters::Ruby.new(ruby)
+  end
+
+  def analyzer
+    Exercism::Analyzers::ForLoop
+  end
 
   attr_reader :ruby
   def setup
@@ -11,13 +19,6 @@ for i in foo
   end
 end
     RUBY
-  end
-
-  def feedback
-    adapter = Exercism::Adapters::Ruby.new(ruby, CodeMiner::Parser)
-    Exercism::Analyzers::ForLoop.call(adapter).feedback.tap do |feedback|
-      assert !feedback.empty?, 'Expected feedback to not be empty'
-    end
   end
 
   def test_source

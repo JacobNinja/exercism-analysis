@@ -11,7 +11,6 @@ Gem::Specification.new do |s|
 
   s.require_paths = %w[lib]
 
-  s.add_dependency('ruby_parser', '~> 3.6')
   s.add_dependency('roodi', '~> 4.0')
 
   s.files = %w[

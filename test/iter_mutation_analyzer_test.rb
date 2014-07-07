@@ -5,7 +5,7 @@ class IterMutationAnalyzerTest < AnalyzerTestCase
   attr_reader :code
 
   def adapter
-    Exercism::Adapters::Ruby.new(code, CodeMiner::Parser)
+    Exercism::Adapters::Ruby.new(code)
   end
 
   def analyzer
