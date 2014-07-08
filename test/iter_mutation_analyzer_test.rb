@@ -2,8 +2,6 @@ require File.expand_path('../test_helper', __FILE__)
 
 class IterMutationAnalyzerTest < AnalyzerTestCase
 
-  attr_reader :code
-
   def adapter
     Exercism::Adapters::Ruby.new(code)
   end
