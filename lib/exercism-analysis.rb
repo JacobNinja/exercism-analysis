@@ -3,6 +3,8 @@ Bundler.setup
 
 require 'codeminer'
 
+require File.expand_path('../exercism-analysis/templates/template', __FILE__)
+
 require File.expand_path('../exercism-analysis/processors/processor', __FILE__)
 require File.expand_path('../exercism-analysis/processors/for_loop_processor', __FILE__)
 require File.expand_path('../exercism-analysis/processors/iter_mutation_processor', __FILE__)

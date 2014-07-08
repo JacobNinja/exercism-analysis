@@ -74,4 +74,72 @@ end
     RUBY
   end
 
+  def test_condition
+    @code = <<-RUBY
+def foo
+  array = []
+  foo.each do |i|
+    if i % 2 == 0
+      array << i
+    end
+  end
+end
+    RUBY
+    assert_equal [<<-RUBY], feedback.map(&:replacement)
+  array = foo.select do |i|
+    i % 2 == 0
+  end
+    RUBY
+  end
+
+  def test_nested_condition
+    @code = <<-RUBY
+def foo
+  array = []
+  foo.each do |i|
+    if i.present?
+      if i % 2 == 0
+        array << i
+      end
+    end
+  end
+end
+    RUBY
+    assert_equal [<<-RUBY], feedback.map(&:replacement)
+  array = foo.select do |i|
+    if i.present?
+      i % 2 == 0
+    end
+  end
+    RUBY
+  end
+
+  def test_multiple_conditions
+    @code = <<-RUBY
+def foo
+  array = []
+  foo.each do |i|
+    if i.even?
+      if i % 2 == 0
+        array << i
+      end
+    elsif i.odd?
+      if i % 2 == 1
+        array << i
+      end
+    end
+  end
+end
+    RUBY
+    assert_equal [<<-RUBY], feedback.map(&:replacement)
+  array = foo.select do |i|
+    if i.even?
+      i % 2 == 0
+    elsif i.odd?
+      i % 2 == 1
+    end
+  end
+    RUBY
+  end
+
 end

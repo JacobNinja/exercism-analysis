@@ -1,13 +1,7 @@
 class Exercism
   module Templates
 
-    class EachToMap
-
-      BLACKLIST = %w(each)
-
-      def self.render(mutation)
-        new(mutation).render
-      end
+    class EachToMap < Template
 
       def initialize(mutation)
         @mutation =  mutation
@@ -28,11 +22,11 @@ end
       private
 
       def body
-        [lines_before_mutation, @mutation.mutator.body.src].reject(&:empty?).join("\n")
+        [lines_before_mutation, @mutation.mutators.first.exp.body.src].reject(&:empty?).join("\n")
       end
 
       def lines_before_mutation
-        @mutation.iter.block.body.src.lines.take(@mutation.mutator.line - @mutation.iter.line - 1).join
+        @mutation.iter.block.body.src.lines.take(@mutation.mutators.first.exp.line - @mutation.iter.line - 1).join
       end
 
     end
