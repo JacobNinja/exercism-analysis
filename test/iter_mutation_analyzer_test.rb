@@ -57,4 +57,21 @@ end
     RUBY
   end
 
+  def test_times
+    @code = <<-RUBY
+def foo
+  array = []
+  foo.times do |n|
+    array << n * 2
+  end
+  array
+end
+    RUBY
+    assert_equal [<<-RUBY], feedback.map(&:replacement)
+array = foo.times.map do |n|
+  n * 2
+end
+    RUBY
+  end
+
 end

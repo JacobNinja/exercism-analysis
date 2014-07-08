@@ -3,6 +3,8 @@ class Exercism
 
     class EachToMap
 
+      BLACKLIST = %w(each)
+
       def self.render(mutation)
         new(mutation).render
       end
@@ -13,10 +15,14 @@ class Exercism
 
       def render
         <<-TEMPLATE
-#{@mutation.variable.value} = #{@mutation.iter.receiver.value}.map do |#{@mutation.iter.block.params.src}|
+#{@mutation.variable.value} = #{invocation}.map do |#{@mutation.iter.block.params.src}|
   #{body}
 end
         TEMPLATE
+      end
+
+      def invocation
+        [@mutation.iter.receiver, @mutation.iter.token].compact.map(&:src).reject(&BLACKLIST.method(:include?)).join('.')
       end
 
       private

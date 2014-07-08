@@ -13,7 +13,7 @@ class Exercism
 
       def process_def(exp)
         assignment = find_exp(exp, :assign) {|e| e.body.type == :array }
-        call_to_each = find_exp(exp, :call) {|e| e.value == 'each' }
+        call_to_each = find_exp(exp, :call) {|e| e.block }
         if assignment && call_to_each
           if mutation = find_mutation_in_block(assignment, call_to_each)
             @mutations << Mutation.new(call_to_each, assignment, mutation)
