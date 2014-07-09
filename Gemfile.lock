@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/JacobNinja/codeminer.git
-  revision: b40205ecfaa6da4e7742886f945a696e6a20272f
+  revision: 339b02fd312821d8acc7da9065a81b48c361039f
   specs:
     codeminer (0.1.0)
 

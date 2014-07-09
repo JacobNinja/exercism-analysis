@@ -8,25 +8,19 @@ class Exercism
       end
 
       def render
-        <<-TEMPLATE
-#{@mutation.variable.value} = #{invocation}.map do |#{@mutation.iter.block.params.src}|
-  #{body}
-end
-        TEMPLATE
+        [padding(@mutation.iter), "#{@mutation.variable.value} = ",
+        CodeMiner::Substitution.new(@mutation.iter).substitute(*mutation_substitutions, each_to_map_substitution)].join
       end
 
-      def invocation
-        [@mutation.iter.receiver, @mutation.iter.token].compact.map(&:src).reject(&BLACKLIST.method(:include?)).join('.')
+      def mutation_substitutions
+        @mutation.mutators.map do |mutator|
+          CodeMiner::Substitution::Value.new(mutator.exp, mutator.exp.body.src)
+        end
       end
 
-      private
-
-      def body
-        [lines_before_mutation, @mutation.mutators.first.exp.body.src].reject(&:empty?).join("\n")
-      end
-
-      def lines_before_mutation
-        @mutation.iter.block.body.src.lines.take(@mutation.mutators.first.exp.line - @mutation.iter.line - 1).join
+      def each_to_map_substitution
+        invocation = [@mutation.iter.value, 'map'] - BLACKLIST
+        CodeMiner::Substitution::Value.new(@mutation.iter.token, invocation.join('.'), @mutation.iter.column)
       end
 
     end

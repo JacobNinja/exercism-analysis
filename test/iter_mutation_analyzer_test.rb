@@ -31,10 +31,10 @@ bar.each do |i|
   end
 
   def test_replacement
-    assert_equal [<<-RUBY], feedback.map(&:replacement)
-array = bar.map do |i|
-  process(i)
-end
+    assert_equal [<<-RUBY.chomp], feedback.map(&:replacement)
+  array = bar.map do |i|
+    process(i)
+  end
     RUBY
   end
 
@@ -48,10 +48,10 @@ def foo
   array
 end
     RUBY
-    assert_equal [<<-RUBY], feedback.map(&:replacement)
-array = bar.map do |i|
-  process(i)
-end
+    assert_equal [<<-RUBY.chomp], feedback.map(&:replacement)
+  array = bar.map do |i|
+    process(i)
+  end
     RUBY
   end
 
@@ -65,10 +65,10 @@ def foo
   array
 end
     RUBY
-    assert_equal [<<-RUBY], feedback.map(&:replacement)
-array = foo.times.map do |n|
-  n * 2
-end
+    assert_equal [<<-RUBY.chomp], feedback.map(&:replacement)
+  array = foo.times.map do |n|
+    n * 2
+  end
     RUBY
   end
 
@@ -83,7 +83,7 @@ def foo
   end
 end
     RUBY
-    assert_equal [<<-RUBY], feedback.map(&:replacement)
+    assert_equal [<<-RUBY.chomp], feedback.map(&:replacement)
   array = foo.select do |i|
     i % 2 == 0
   end
@@ -103,7 +103,7 @@ def foo
   end
 end
     RUBY
-    assert_equal [<<-RUBY], feedback.map(&:replacement)
+    assert_equal [<<-RUBY.chomp], feedback.map(&:replacement)
   array = foo.select do |i|
     if i.present?
       i % 2 == 0
@@ -129,7 +129,7 @@ def foo
   end
 end
     RUBY
-    assert_equal [<<-RUBY], feedback.map(&:replacement)
+    assert_equal [<<-RUBY.chomp], feedback.map(&:replacement)
   array = foo.select do |i|
     if i.even?
       i % 2 == 0

@@ -10,9 +10,9 @@ class Exercism
 
       def call
         feedback = processor.result.map do |mutation|
-          Feedback.new(mutation.iter.src_extract, mutation_replacement(mutation))
+          Feedback.new(mutation.iter.src_extract, mutation_replacement(mutation)) unless mutation.mutators.empty?
         end
-        Result.new(:iter_mutation, feedback)
+        Result.new(:iter_mutation, feedback.compact)
       end
 
       private
@@ -26,7 +26,9 @@ class Exercism
       end
 
       def filter?(mutation)
-        mutation.iter.block.params.each_param.any? {|param| mutation.mutators.map{|m| m.exp.body.value }.include?(param.value) }
+        mutation.iter.block.params.each_param.any? do |param|
+          mutation.mutators.map { |m| m.exp.body.value }.include?(param.value)
+        end
       end
 
     end
