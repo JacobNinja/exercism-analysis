@@ -19,4 +19,16 @@ class IndentationAnalyzerTest < AnalyzerTestCase
     assert_equal [1], feedback.map(&:line)
   end
 
+  def test_inconsistent_spacing
+    @ruby = <<-RUBY
+def foo
+  bar
+   baz
+end
+    RUBY
+    assert_equal [:inconsistent_spacing], feedback.map(&:type)
+    assert_equal ['   baz'], feedback.map(&:src)
+    assert_equal [3], feedback.map(&:line)
+  end
+
 end

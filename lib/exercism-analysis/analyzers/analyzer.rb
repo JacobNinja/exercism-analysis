@@ -25,6 +25,10 @@ class Exercism
           new(type, src.extract, replacement, src.line, src.column, src.end_line, src.end_column)
         end
 
+        def self.from_line(type, line, line_no)
+          new(type, line, nil, line_no, 0, line_no, line.length)
+        end
+
       end
 
       def with_tempfile(name, &block)
