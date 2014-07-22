@@ -21,6 +21,7 @@ require File.expand_path('../exercism-analysis/adapters/clojure', __FILE__)
 
 require File.expand_path('../exercism-analysis/analyzers/analyzer', __FILE__)
 require File.expand_path('../exercism-analysis/analyzers/ruby/for_loop', __FILE__)
+require File.expand_path('../exercism-analysis/analyzers/ruby/indentation', __FILE__)
 require File.expand_path('../exercism-analysis/analyzers/ruby/iter_mutation', __FILE__)
 require File.expand_path('../exercism-analysis/analyzers/ruby/range', __FILE__)
 require File.expand_path('../exercism-analysis/analyzers/ruby/roodi', __FILE__)
