@@ -16,7 +16,7 @@ class SendAnalyzerTest < AnalyzerTestCase
   end
 
   def test_source
-    assert_equal [code], feedback.map(&:src).map(&:extract)
+    assert_equal [code], feedback.map(&:src)
   end
 
   def test_replacement

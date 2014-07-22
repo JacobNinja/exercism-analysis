@@ -10,7 +10,7 @@ class Exercism
 
       def call
         feedback = processor.result.map do |mutation|
-          Feedback.new(mutation.iter.src_extract, mutation_replacement(mutation)) unless mutation.mutators.empty?
+          Feedback.from_src(:iter_mutation, mutation.iter.src_extract, mutation_replacement(mutation)) unless mutation.mutators.empty?
         end
         Result.new(:iter_mutation, feedback.compact)
       end

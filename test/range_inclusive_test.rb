@@ -17,7 +17,7 @@ foo..bar - 1
   end
 
   def test_source
-    assert_equal [@code.chomp], feedback.map(&:src).map(&:extract)
+    assert_equal [@code.chomp], feedback.map(&:src)
   end
 
   def test_replacement

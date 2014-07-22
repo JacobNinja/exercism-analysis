@@ -7,7 +7,7 @@ class Exercism
 
       def call
         feedback = processor.result.map do |exp|
-          Feedback.new(exp.src_extract, replace_for_with_each(exp))
+          Feedback.from_src(:for_loop, exp.src_extract, replace_for_with_each(exp))
         end
         Result.new(:for_loop, feedback)
       end

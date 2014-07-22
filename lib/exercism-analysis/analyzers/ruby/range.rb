@@ -10,7 +10,7 @@ class Exercism
       def call
         feedback = processor.result.map do |range_exp|
           if range_exp.inclusive? && decrement_one?(range_exp.right)
-            Feedback.new(range_exp.src_extract, Templates::RangeExclusive.render(range_exp))
+            Feedback.from_src(:range, range_exp.src_extract, Templates::RangeExclusive.render(range_exp))
           end
         end.compact
         Result.new(:range_inclusive, feedback)

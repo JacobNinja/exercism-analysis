@@ -22,7 +22,7 @@ end
   end
 
   def test_source
-    assert_equal [ruby], feedback.map(&:src).map(&:extract)
+    assert_equal [ruby], feedback.map(&:src)
   end
 
   def test_replacement

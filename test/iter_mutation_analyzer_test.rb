@@ -23,7 +23,7 @@ end
   end
 
   def test_source
-    assert_equal [<<-RUBY.chomp], feedback.map(&:src).map(&:extract)
+    assert_equal [<<-RUBY.chomp], feedback.map(&:src)
 bar.each do |i|
     array << process(i)
   end

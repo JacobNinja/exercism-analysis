@@ -7,7 +7,7 @@ class Exercism
 
       def call
         feedback = processor.result.map do |exp|
-          Feedback.new(exp.src_extract, public_send_template(exp))
+          Feedback.from_src(:send, exp.src_extract, public_send_template(exp))
         end
         Result.new(:send, feedback)
       end
