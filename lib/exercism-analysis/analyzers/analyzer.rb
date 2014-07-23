@@ -21,7 +21,7 @@ class Exercism
       Result = Struct.new(:type, :feedback)
       Feedback = Struct.new(:type, :src, :replacement, :line, :column, :end_line, :end_column) do
 
-        def self.from_src(type, src, replacement)
+        def self.from_src(type, src, replacement=nil)
           new(type, src.extract, replacement, src.line, src.column, src.end_line, src.end_column)
         end
 
