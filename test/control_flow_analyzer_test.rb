@@ -15,20 +15,20 @@ class ControlFlowAnalyzerTest < AnalyzerTestCase
   def test_and
     @ruby = 'foo and bar'
     assert_equal [@ruby], feedback.map(&:src)
-    assert_equal [:and], feedback.map(&:type)
+    assert_equal [:logical], feedback.map(&:type)
     assert_equal [1], feedback.map(&:line)
   end
 
   def test_or
     @ruby = 'foo or bar'
     assert_equal [@ruby], feedback.map(&:src)
-    assert_equal [:or], feedback.map(&:type)
+    assert_equal [:logical], feedback.map(&:type)
   end
 
   def test_not
     @ruby = 'not foo'
     assert_equal [@ruby], feedback.map(&:src)
-    assert_equal [:not], feedback.map(&:type)
+    assert_equal [:logical], feedback.map(&:type)
   end
 
 end

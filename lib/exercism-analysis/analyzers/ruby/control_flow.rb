@@ -11,7 +11,7 @@ class Exercism
 
       def feedback
         processor.result.map do |exp|
-          Feedback.from_src(exp.value.to_sym, exp.src_extract)
+          Feedback.from_src(:logical, exp.src_extract)
         end
       end
 
