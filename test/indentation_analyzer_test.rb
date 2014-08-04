@@ -31,4 +31,16 @@ end
     assert_equal [3], feedback.map(&:line)
   end
 
+  def test_inconsistent_spacing_with_tabs
+    @ruby = <<-RUBY
+def foo
+#{"\t\t"}bar
+#{"\t\t\t"}baz
+end
+    RUBY
+    assert_equal [:inconsistent_spacing, :tab], feedback.map(&:type)
+    assert_equal ["\t\t\tbaz", "\t\tbar"], feedback.map(&:src)
+    assert_equal [3, 2], feedback.map(&:line)
+  end
+
 end

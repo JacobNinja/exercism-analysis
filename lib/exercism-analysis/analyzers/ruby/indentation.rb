@@ -22,14 +22,14 @@ class Exercism
       def lines_with_tabs
         lines.select do |line, _|
           line =~ /\t/
-        end
+        end.take(1)
       end
 
       def lines_with_inconsistent_spacing
         lines.each_cons(2).select do |(line, _), (line2, _)|
           whitespace_difference = whitespace_count(line2) - whitespace_count(line)
           whitespace_difference == 1 || whitespace_difference > 2
-        end.map(&:last)
+        end.map(&:last).take(1)
       end
 
       def lines
