@@ -37,7 +37,7 @@ class Exercism
       end
 
       def whitespace_count(str)
-        str =~ /\S/
+        (str =~ /\S/).to_i
       end
 
     end

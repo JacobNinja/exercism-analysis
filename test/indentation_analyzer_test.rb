@@ -43,4 +43,13 @@ end
     assert_equal [3, 2], feedback.map(&:line)
   end
 
+  def test_empty_lines
+    @ruby = <<-RUBY
+def foo
+
+end
+    RUBY
+    assert_equal [], feedback.map(&:type)
+  end
+
 end
