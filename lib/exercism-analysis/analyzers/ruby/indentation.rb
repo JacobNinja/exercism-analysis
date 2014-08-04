@@ -37,7 +37,7 @@ class Exercism
       end
 
       def whitespace_count(str)
-        str =~ /\w/
+        str =~ /\S/
       end
 
     end
