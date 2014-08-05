@@ -33,7 +33,7 @@ class Exercism
       end
 
       def lines
-        adapter.code.lines.zip(1..Float::INFINITY)
+        adapter.code.lines.zip(1..Float::INFINITY).reject {|(line, _)| line.lstrip.empty? }
       end
 
       def whitespace_count(str)

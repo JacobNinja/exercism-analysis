@@ -45,8 +45,12 @@ end
 
   def test_empty_lines
     @ruby = <<-RUBY
-def foo
+class Test
+  def foo
+    bar
 
+    baz
+  end
 end
     RUBY
     assert_equal [], feedback.map(&:type)
