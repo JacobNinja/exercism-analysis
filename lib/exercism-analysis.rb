@@ -28,6 +28,7 @@ require File.expand_path('../exercism-analysis/analyzers/ruby/iter_mutation', __
 require File.expand_path('../exercism-analysis/analyzers/ruby/range', __FILE__)
 require File.expand_path('../exercism-analysis/analyzers/ruby/roodi', __FILE__)
 require File.expand_path('../exercism-analysis/analyzers/ruby/send', __FILE__)
+require File.expand_path('../exercism-analysis/analyzers/ruby/shebang', __FILE__)
 require File.expand_path('../exercism-analysis/analyzers/javascript/jslint', __FILE__)
 require File.expand_path('../exercism-analysis/analyzers/python/pylint', __FILE__)
 require File.expand_path('../exercism-analysis/analyzers/go/golint', __FILE__)
