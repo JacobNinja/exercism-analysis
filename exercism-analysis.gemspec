@@ -17,29 +17,11 @@ Gem::Specification.new do |s|
     exercism-analysis.gemspec
     lib/exercism-analysis.rb
     lib/exercism-analysis/analysis.rb
-    lib/exercism-analysis/adapters/adapter.rb
-    lib/exercism-analysis/adapters/clojure.rb
-    lib/exercism-analysis/adapters/go.rb
-    lib/exercism-analysis/adapters/javascript.rb
-    lib/exercism-analysis/adapters/python.rb
-    lib/exercism-analysis/adapters/ruby.rb
-    lib/exercism-analysis/analyzers/analyzer.rb
-    lib/exercism-analysis/analyzers/javascript/jslint.rb
-    lib/exercism-analysis/analyzers/python/pylint.rb
-    lib/exercism-analysis/analyzers/ruby/for_loop.rb
-    lib/exercism-analysis/analyzers/ruby/iter_mutation.rb
-    lib/exercism-analysis/analyzers/ruby/roodi.rb
-    lib/exercism-analysis/analyzers/ruby/send.rb
-    lib/exercism-analysis/analyzers/go/golint.rb
-    lib/exercism-analysis/analyzers/clojure/kibit.rb
-    lib/exercism-analysis/processors/processor.rb
-    lib/exercism-analysis/processors/for_loop_processor.rb
-    lib/exercism-analysis/processors/iter_mutation_processor.rb
-    lib/exercism-analysis/processors/send_processor.rb
-    lib/exercism-analysis/templates/template.rb
-    lib/exercism-analysis/templates/each_to_map.rb
-    lib/exercism-analysis/templates/each_to_select.rb
   ]
+  s.files += Dir.glob('lib/exercism-analysis/adapters/*.rb')
+  s.files += Dir.glob('lib/exercism-analysis/analyzers/**/*.rb')
+  s.files += Dir.glob('lib/exercism-analysis/processors/*.rb')
+  s.files += Dir.glob('lib/exercism-analysis/templates/*.rb')
   s.files += Dir.glob('vendor/**/*')
 
 end
