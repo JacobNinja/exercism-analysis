@@ -44,6 +44,10 @@ class Exercism
         ' ' * exp.column
       end
 
+      def lines
+        adapter.code.lines.zip(1..Float::INFINITY).reject {|(line, _)| line.lstrip.empty? }
+      end
+
     end
 
   end
