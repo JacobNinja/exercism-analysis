@@ -2,51 +2,61 @@ require File.expand_path('../test_helper', __FILE__)
 
 class IndentationAnalyzerTest < AnalyzerTestCase
 
-  def adapter
-    Exercism::Adapters::Ruby.new(ruby)
-  end
-
   def analyzer
     Exercism::Analyzers::Indentation
   end
 
-  attr_reader :ruby
+  def assert_inconsistent(code, line)
+    adapter = Exercism::Adapters::Ruby.new(code)
+    indentation_feedback = feedback(adapter)
+    assert_equal [:inconsistent_spacing], indentation_feedback.map(&:type)
+    assert_equal [line], indentation_feedback.map(&:line)
+  end
 
-  def test_inconsistent_spacing
-    @ruby = <<-RUBY
-def foo
+  def test_if_consistent
+    assert_empty feedback(Exercism::Adapters::Ruby.new(<<-RUBY))
+if foo
   bar
-   baz
+else
+  baz
 end
     RUBY
-    assert_equal [:inconsistent_spacing], feedback.map(&:type)
-    assert_equal ['   baz'], feedback.map(&:src)
-    assert_equal [3], feedback.map(&:line)
   end
 
-  def test_inconsistent_spacing_with_tabs
-    @ruby = <<-RUBY
-def foo
-#{"\t\t"}bar
-#{"\t\t\t"}baz
-end
+  def test_single_line
+    assert_empty feedback(Exercism::Adapters::Ruby.new(<<-RUBY))
+if foo then bar else baz end
     RUBY
-    assert_equal [:inconsistent_spacing], feedback.map(&:type)
-    assert_equal ["\t\t\tbaz"], feedback.map(&:src)
-    assert_equal [3], feedback.map(&:line)
   end
 
-  def test_empty_lines
-    @ruby = <<-RUBY
-class Test
-  def foo
+  def test_if_end
+    assert_inconsistent(<<-RUBY, 1)
+if foo
+  bar
+ end
+    RUBY
+  end
+
+  def test_if_else
+    assert_inconsistent(<<-RUBY, 1)
+  if foo
     bar
-
+else
     baz
   end
+    RUBY
+  end
+
+  def test_elsif
+    assert_inconsistent(<<-RUBY, 3)
+if foo
+  bar
+elsif baz
+  false
+  else
+  true
 end
     RUBY
-    assert_equal [], feedback.map(&:type)
   end
 
 end

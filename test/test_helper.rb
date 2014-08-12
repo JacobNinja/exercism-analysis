@@ -5,7 +5,7 @@ class AnalyzerTestCase < Test::Unit::TestCase
 
   attr_reader :code
 
-  def feedback
+  def feedback(adapter=adapter)
     result = Exercism::Analysis.new(adapter).run(analyzer)[analyzer]
     assert_not_nil result, 'Expected result to not be nil'
     result.feedback
