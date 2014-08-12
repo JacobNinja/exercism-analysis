@@ -19,4 +19,9 @@ class TabAnalyzerTest < AnalyzerTestCase
     assert_equal [1], feedback.map(&:line)
   end
 
+  def test_tabs_and_spaces
+    @ruby = "\t foo"
+    assert_equal [:tab_and_space], feedback.map(&:type)
+  end
+
 end
