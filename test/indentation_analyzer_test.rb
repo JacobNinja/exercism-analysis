@@ -107,4 +107,31 @@ def foo
     RUBY
   end
 
+  def test_begin_end
+    assert_inconsistent(<<-RUBY, 1)
+begin
+ end
+    RUBY
+  end
+
+  def test_begin_rescue
+    assert_inconsistent(<<-RUBY, 1)
+begin
+  foo
+ rescue
+  bar
+end
+    RUBY
+  end
+
+  def test_begin_ensure
+    assert_inconsistent(<<-RUBY, 1)
+begin
+  foo
+ ensure
+  bar
+end
+    RUBY
+  end
+
 end

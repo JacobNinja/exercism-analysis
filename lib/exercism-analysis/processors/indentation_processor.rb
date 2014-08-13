@@ -39,6 +39,12 @@ class Exercism
 
       alias process_defs process_def
 
+      def process_begin(exp)
+        if inconsistent_end?(exp) || [exp.rescue, exp.ensure].compact.any? {|e| inconsistent?(exp, e)}
+          @inconsistent_nodes << exp
+        end
+      end
+
       private
 
       def inconsistent?(a, b, offset=0)
