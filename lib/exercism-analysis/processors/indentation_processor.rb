@@ -3,6 +3,18 @@ class Exercism
 
     class IndentationProcessor < Processor
 
+      def self.inconsistent_end(*events)
+        events.each do |event|
+          define_method "process_#{event}" do |exp|
+            if inconsistent_end?(exp)
+              @inconsistent_nodes << exp
+            end
+          end
+        end
+      end
+
+      inconsistent_end :for, :class, :def, :defs
+
       def initialize
         @inconsistent_nodes = []
       end
@@ -25,27 +37,11 @@ class Exercism
         end
       end
 
-      def process_class(exp)
-        if inconsistent_end?(exp)
-          @inconsistent_nodes << exp
-        end
-      end
-
-      def process_def(exp)
-        if inconsistent_end?(exp)
-          @inconsistent_nodes << exp
-        end
-      end
-
-      alias process_defs process_def
-
       def process_begin(exp)
         if inconsistent_end?(exp) || [exp.rescue, exp.ensure].compact.any? {|e| inconsistent?(exp, e)}
           @inconsistent_nodes << exp
         end
       end
-
-      alias process_for process_class
 
       private
 
