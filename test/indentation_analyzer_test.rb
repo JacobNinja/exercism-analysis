@@ -100,4 +100,11 @@ class Foo
     RUBY
   end
 
+  def test_method_end
+    assert_inconsistent(<<-RUBY, 1)
+def foo
+ end
+    RUBY
+  end
+
 end

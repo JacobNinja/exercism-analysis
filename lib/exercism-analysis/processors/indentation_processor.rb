@@ -17,6 +17,8 @@ class Exercism
         end
       end
 
+      alias process_elsif process_if
+
       def process_case(exp)
         if inconsistent_end?(exp) || exp.whens.any? {|when_exp| inconsistent?(exp, when_exp, 2) }
           @inconsistent_nodes << exp
@@ -29,7 +31,13 @@ class Exercism
         end
       end
 
-      alias process_elsif process_if
+      def process_def(exp)
+        if inconsistent_end?(exp)
+          @inconsistent_nodes << exp
+        end
+      end
+
+      alias process_defs process_def
 
       private
 
