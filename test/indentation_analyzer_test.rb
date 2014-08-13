@@ -141,4 +141,24 @@ for i in foo
     RUBY
   end
 
+  def test_until_consistent
+    assert_consistent 'foo until bar'
+  end
+
+  def test_until_end
+    assert_inconsistent(<<-RUBY, 1)
+until bar
+  foo
+ end
+    RUBY
+  end
+
+  def test_while_end
+    assert_inconsistent(<<-RUBY, 1)
+while bar
+  foo
+ end
+    RUBY
+  end
+
 end

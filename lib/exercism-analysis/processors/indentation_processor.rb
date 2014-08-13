@@ -13,7 +13,7 @@ class Exercism
         end
       end
 
-      inconsistent_end :for, :class, :def, :defs
+      inconsistent_end :for, :class, :def, :defs, :until, :while
 
       def initialize
         @inconsistent_nodes = []
