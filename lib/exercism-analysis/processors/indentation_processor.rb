@@ -45,6 +45,8 @@ class Exercism
         end
       end
 
+      alias process_for process_class
+
       private
 
       def inconsistent?(a, b, offset=0)

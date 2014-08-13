@@ -134,4 +134,11 @@ end
     RUBY
   end
 
+  def test_for_end
+    assert_inconsistent(<<-RUBY, 1)
+for i in foo
+ end
+    RUBY
+  end
+
 end
