@@ -93,4 +93,11 @@ end
     RUBY
   end
 
+  def test_class_end
+    assert_inconsistent(<<-RUBY, 1)
+class Foo
+ end
+    RUBY
+  end
+
 end

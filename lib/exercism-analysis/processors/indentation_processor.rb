@@ -23,6 +23,12 @@ class Exercism
         end
       end
 
+      def process_class(exp)
+        if inconsistent_end?(exp)
+          @inconsistent_nodes << exp
+        end
+      end
+
       alias process_elsif process_if
 
       private
