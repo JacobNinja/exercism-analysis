@@ -8,11 +8,17 @@ class Exercism
       end
 
       def result
-        @inconsistent_nodes
+        @inconsistent_nodes.select(&method(:multiple_lines?))
       end
 
       def process_if(exp)
-        if inconsistent?(exp)
+        if inconsistent_end?(exp) || (exp.else_statement && inconsistent?(exp, exp.else_statement))
+          @inconsistent_nodes << exp
+        end
+      end
+
+      def process_case(exp)
+        if inconsistent_end?(exp) || exp.whens.any? {|when_exp| inconsistent?(exp, when_exp, 2) }
           @inconsistent_nodes << exp
         end
       end
@@ -21,16 +27,12 @@ class Exercism
 
       private
 
-      def inconsistent?(exp)
-        multiple_lines?(exp) && (inconsistent_end?(exp) || inconsistent_else?(exp))
+      def inconsistent?(a, b, offset=0)
+        a.column != b.column - offset
       end
 
       def inconsistent_end?(exp)
         exp.column != (exp.end_column - 'end'.length)
-      end
-
-      def inconsistent_else?(exp)
-        exp.else_statement && exp.column != exp.else_statement.column
       end
 
       def multiple_lines?(exp)

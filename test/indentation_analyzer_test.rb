@@ -13,8 +13,12 @@ class IndentationAnalyzerTest < AnalyzerTestCase
     assert_equal [line], indentation_feedback.map(&:line)
   end
 
+  def assert_consistent(code)
+    assert_empty feedback(Exercism::Adapters::Ruby.new(code))
+  end
+
   def test_if_consistent
-    assert_empty feedback(Exercism::Adapters::Ruby.new(<<-RUBY))
+    assert_consistent <<-RUBY
 if foo
   bar
 else
@@ -24,7 +28,7 @@ end
   end
 
   def test_single_line
-    assert_empty feedback(Exercism::Adapters::Ruby.new(<<-RUBY))
+    assert_consistent <<-RUBY
 if foo then bar else baz end
     RUBY
   end
@@ -55,6 +59,36 @@ elsif baz
   false
   else
   true
+end
+    RUBY
+  end
+
+  def test_case_consistent
+    assert_consistent(<<-RUBY)
+case foo
+  when bar then baz
+  when bar
+    baz
+  else
+    baz
+end
+    RUBY
+  end
+
+  def test_case_end
+    assert_inconsistent(<<-RUBY, 1)
+case foo
+  when bar
+    baz
+  end
+    RUBY
+  end
+
+  def test_case_when
+    assert_inconsistent(<<-RUBY, 1)
+case foo
+when bar
+  baz
 end
     RUBY
   end
