@@ -32,7 +32,7 @@ class Exercism
       alias process_elsif process_if
 
       def process_case(exp)
-        if inconsistent_end?(exp) || exp.whens.any? {|when_exp| inconsistent?(exp, when_exp, 2) }
+        if inconsistent_end?(exp) || inconsistent_when?(exp)
           @inconsistent_nodes << exp
         end
       end
@@ -51,6 +51,12 @@ class Exercism
 
       def inconsistent_end?(exp)
         exp.column != (exp.end_column - 'end'.length)
+      end
+
+      def inconsistent_when?(exp)
+        expected_column = exp.whens.map(&:column).first
+        exp.whens.any?{|when_exp| when_exp.column != expected_column} ||
+            exp.whens.any? { |when_exp| (inconsistent?(exp, when_exp, 2) && inconsistent?(exp, when_exp)) }
       end
 
       def multiple_lines?(exp)

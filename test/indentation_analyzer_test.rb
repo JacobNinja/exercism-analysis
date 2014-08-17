@@ -73,6 +73,12 @@ case foo
     baz
 end
     RUBY
+    assert_consistent(<<-RUBY)
+case foo
+when bar then baz
+else baz
+end
+    RUBY
   end
 
   def test_case_end
@@ -89,6 +95,8 @@ case foo
 case foo
 when bar
   baz
+  when baz
+    true
 end
     RUBY
   end
