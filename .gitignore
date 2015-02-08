@@ -2,4 +2,6 @@
 .ruby-gemset
 *.pyc
 *.gem
+/bin/*
+
 
