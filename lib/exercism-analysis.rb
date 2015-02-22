@@ -1,6 +1,3 @@
-require 'bundler'
-Bundler.setup
-
 require 'codeminer'
 
 require File.expand_path('../exercism-analysis/templates/template', __FILE__)

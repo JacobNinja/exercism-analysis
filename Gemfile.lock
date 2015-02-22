@@ -1,18 +1,14 @@
-GIT
-  remote: git://github.com/JacobNinja/codeminer.git
-  revision: dc278f9f3cf14c0a1d7cb25cd89a629f3a36f113
-  specs:
-    codeminer (0.1.0)
-
 PATH
   remote: .
   specs:
     exercism-analysis (0.1.0)
+      codeminer (~> 0.1)
       roodi (~> 4.0)
 
 GEM
   remote: https://rubygems.org/
   specs:
+    codeminer (0.1.1)
     roodi (4.0.0)
       ruby_parser (~> 3.2, >= 3.2.2)
     ruby_parser (3.6.1)
@@ -24,6 +20,5 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  codeminer!
   exercism-analysis!
   test-unit (= 2.5.5)
