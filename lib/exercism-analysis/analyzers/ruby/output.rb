@@ -1,7 +1,7 @@
 class Exercism
   module Analyzers
 
-    class Puts < Analyzer
+    class Output < Analyzer
 
       STDOUT_METHODS = %w(p puts print)
 
@@ -9,9 +9,9 @@ class Exercism
 
       def call
         feedback = processor.result.map do |exp|
-          Feedback.from_src(:puts, exp.src_extract)
+          Feedback.from_src(:print, exp.src_extract)
         end
-        Result.new(:puts, feedback)
+        Result.new(:output, feedback)
       end
 
     end

@@ -1,9 +1,9 @@
 require File.expand_path('../test_helper', __FILE__)
 
-class PutsAnalyzerTest < AnalyzerTestCase
+class OutputAnalyzerTest < AnalyzerTestCase
 
   def analyzer
-    Exercism::Analyzers::Puts
+    Exercism::Analyzers::Output
   end
 
   def adapter
@@ -20,8 +20,9 @@ puts "foo"
     assert_equal [adapter.code], feedback.map(&:src)
   end
 
-  def test_feedback_type
-    assert_equal [:puts], feedback.map(&:type)
+  def test_type
+    assert_equal :output, result.type
+    assert_equal [:print], feedback.map(&:type)
   end
 
   def test_p
