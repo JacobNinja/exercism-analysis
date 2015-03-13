@@ -3,9 +3,9 @@ class Exercism
 
     class Puts < Analyzer
 
-      METHOD_NAME = 'puts'
+      STDOUT_METHODS = %w(p puts print)
 
-      processor Processors::CallProcessor.partial([METHOD_NAME])
+      processor Processors::CallProcessor.partial(STDOUT_METHODS)
 
       def call
         feedback = processor.result.map do |exp|
