@@ -11,4 +11,8 @@ class AnalyzerTestCase < Test::Unit::TestCase
     result.feedback
   end
 
+  def result
+    Exercism::Analysis.new(adapter).run(analyzer)[analyzer]
+  end
+
 end

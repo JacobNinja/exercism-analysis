@@ -1,8 +1,10 @@
 require 'codeminer'
 
+require File.expand_path('../exercism-analysis/analysis', __FILE__)
 require File.expand_path('../exercism-analysis/templates/template', __FILE__)
 
 require File.expand_path('../exercism-analysis/processors/processor', __FILE__)
+require File.expand_path('../exercism-analysis/processors/call_processor', __FILE__)
 require File.expand_path('../exercism-analysis/processors/control_flow_processor', __FILE__)
 require File.expand_path('../exercism-analysis/processors/for_loop_processor', __FILE__)
 require File.expand_path('../exercism-analysis/processors/indentation_processor', __FILE__)
@@ -10,7 +12,6 @@ require File.expand_path('../exercism-analysis/processors/iter_mutation_processo
 require File.expand_path('../exercism-analysis/processors/range_processor', __FILE__)
 require File.expand_path('../exercism-analysis/processors/send_processor', __FILE__)
 
-require File.expand_path('../exercism-analysis/analysis', __FILE__)
 require File.expand_path('../exercism-analysis/adapters/adapter', __FILE__)
 require File.expand_path('../exercism-analysis/adapters/javascript', __FILE__)
 require File.expand_path('../exercism-analysis/adapters/ruby', __FILE__)
@@ -23,6 +24,7 @@ require File.expand_path('../exercism-analysis/analyzers/ruby/control_flow', __F
 require File.expand_path('../exercism-analysis/analyzers/ruby/for_loop', __FILE__)
 require File.expand_path('../exercism-analysis/analyzers/ruby/indentation', __FILE__)
 require File.expand_path('../exercism-analysis/analyzers/ruby/iter_mutation', __FILE__)
+require File.expand_path('../exercism-analysis/analyzers/ruby/output', __FILE__)
 require File.expand_path('../exercism-analysis/analyzers/ruby/range', __FILE__)
 require File.expand_path('../exercism-analysis/analyzers/ruby/roodi', __FILE__)
 require File.expand_path('../exercism-analysis/analyzers/ruby/send', __FILE__)
