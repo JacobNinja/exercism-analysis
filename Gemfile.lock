@@ -2,13 +2,13 @@ PATH
   remote: .
   specs:
     exercism-analysis (0.1.0)
-      codeminer (~> 0.1)
+      codeminer (~> 0.2)
       roodi (~> 4.0)
 
 GEM
   remote: https://rubygems.org/
   specs:
-    codeminer (0.1.1)
+    codeminer (0.2)
     rake (10.1.0)
     roodi (4.0.0)
       ruby_parser (~> 3.2, >= 3.2.2)

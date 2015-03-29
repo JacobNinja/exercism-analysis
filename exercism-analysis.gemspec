@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency('test-unit', '2.5.5')
   s.add_development_dependency('rake', '10.1.0')
   s.add_dependency('roodi', '~> 4.0')
-  s.add_dependency('codeminer', '~> 0.1')
+  s.add_dependency('codeminer', '~> 0.2')
 
   s.files = %w[
     exercism-analysis.gemspec
