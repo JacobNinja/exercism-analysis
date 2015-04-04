@@ -1,13 +1,13 @@
 require File.expand_path('../test_helper', __FILE__)
 
-class LoopConditionalAnalyzerTest < AnalyzerTestCase
+class EnumerableConditionTest < AnalyzerTestCase
 
   def adapter
     Exercism::Adapters::Ruby.new(@ruby)
   end
 
   def analyzer
-    Exercism::Analyzers::LoopConditional
+    Exercism::Analyzers::EnumerableCondition
   end
 
   def test_each_no_condition
@@ -25,7 +25,7 @@ foo.each do |bar|
   baz if bar
 end
     RUBY
-    assert_equal [:loop_conditional], feedback.map(&:type)
+    assert_equal [:enumerable_condition], feedback.map(&:type)
     assert_equal ['baz if bar'], feedback.map(&:src)
   end
 

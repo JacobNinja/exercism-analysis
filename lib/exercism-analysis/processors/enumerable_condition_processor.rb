@@ -1,7 +1,7 @@
 class Exercism
   module Processors
 
-    class LoopConditionalProcessor < Processor
+    class EnumerableConditionProcessor < Processor
 
       ENUMERABLE_METHODS = %w(
         all? any? chunk collect collect_concat count cycle detect drop_while each
