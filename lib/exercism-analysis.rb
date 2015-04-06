@@ -9,6 +9,7 @@ require File.expand_path('../exercism-analysis/processors/control_flow_processor
 require File.expand_path('../exercism-analysis/processors/for_loop_processor', __FILE__)
 require File.expand_path('../exercism-analysis/processors/indentation_processor', __FILE__)
 require File.expand_path('../exercism-analysis/processors/iter_mutation_processor', __FILE__)
+require File.expand_path('../exercism-analysis/processors/enumerable_condition_processor', __FILE__)
 require File.expand_path('../exercism-analysis/processors/range_processor', __FILE__)
 require File.expand_path('../exercism-analysis/processors/send_processor', __FILE__)
 
@@ -24,6 +25,7 @@ require File.expand_path('../exercism-analysis/analyzers/ruby/control_flow', __F
 require File.expand_path('../exercism-analysis/analyzers/ruby/for_loop', __FILE__)
 require File.expand_path('../exercism-analysis/analyzers/ruby/indentation', __FILE__)
 require File.expand_path('../exercism-analysis/analyzers/ruby/iter_mutation', __FILE__)
+require File.expand_path('../exercism-analysis/analyzers/ruby/enumerable_condition', __FILE__)
 require File.expand_path('../exercism-analysis/analyzers/ruby/output', __FILE__)
 require File.expand_path('../exercism-analysis/analyzers/ruby/range', __FILE__)
 require File.expand_path('../exercism-analysis/analyzers/ruby/roodi', __FILE__)
