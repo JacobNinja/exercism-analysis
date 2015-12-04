@@ -25,10 +25,4 @@ class ControlFlowAnalyzerTest < AnalyzerTestCase
     assert_equal [:logical], feedback.map(&:type)
   end
 
-  def test_not
-    @ruby = 'not foo'
-    assert_equal [@ruby], feedback.map(&:src)
-    assert_equal [:logical], feedback.map(&:type)
-  end
-
 end

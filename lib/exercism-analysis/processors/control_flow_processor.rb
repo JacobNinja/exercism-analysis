@@ -3,7 +3,7 @@ class Exercism
 
     class ControlFlowProcessor < Processor
 
-      CONTROL_FLOW = %w(and or not)
+      CONTROL_FLOW = %w(and or)
 
       def initialize
         @control_flow = []
